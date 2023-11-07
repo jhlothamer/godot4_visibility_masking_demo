@@ -1,0 +1,65 @@
+[gd_scene load_steps=6 format=3 uid="uid://de3h10lhcnk3r"]
+
+[ext_resource type="PackedScene" uid="uid://bswc06g8au3yg" path="res://scenes/components/transition_button/transition_button.tscn" id="2"]
+[ext_resource type="Script" path="res://scenes/ui/pause_dialog.gd" id="3"]
+[ext_resource type="PackedScene" uid="uid://dugd88fmowfix" path="res://scenes/ui/dialog_background.tscn" id="4"]
+[ext_resource type="Theme" uid="uid://cg33m0umsdbg0" path="res://assets/themes/global.tres" id="5"]
+[ext_resource type="PackedScene" uid="uid://brd1y0pk3ipmb" path="res://scenes/ui/settings_dialog.tscn" id="6"]
+
+[node name="PauseDialog" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("5")
+script = ExtResource("3")
+
+[node name="DialogBackground" parent="." instance=ExtResource("4")]
+layout_mode = 0
+anchors_preset = 0
+anchor_right = 0.0
+anchor_bottom = 0.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+layout_mode = 0
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -138.5
+offset_top = -145.5
+offset_right = 138.5
+offset_bottom = 145.5
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Label" type="Label" parent="VBoxContainer"]
+layout_mode = 2
+theme_type_variation = &"TitleLabel"
+text = "Paused"
+
+[node name="ResumeBtn" type="Button" parent="VBoxContainer"]
+layout_mode = 2
+text = "Resume"
+flat = true
+
+[node name="Settingsbtn" type="Button" parent="VBoxContainer"]
+layout_mode = 2
+text = "Settings"
+flat = true
+
+[node name="MainMenuBtn" parent="VBoxContainer" instance=ExtResource("2")]
+layout_mode = 2
+text = "Main Menu"
+scene_to_load = "res://scenes/etc/title.tscn"
+
+[node name="SettingsDialog" parent="." instance=ExtResource("6")]
+visible = false
+layout_mode = 1
+
+[connection signal="pressed" from="VBoxContainer/ResumeBtn" to="." method="_on_ResumeBtn_pressed"]
+[connection signal="pressed" from="VBoxContainer/Settingsbtn" to="." method="_on_Settingsbtn_pressed"]

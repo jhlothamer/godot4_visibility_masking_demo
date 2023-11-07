@@ -1,0 +1,88 @@
+[gd_scene load_steps=5 format=3 uid="uid://brd1y0pk3ipmb"]
+
+[ext_resource type="Theme" uid="uid://cg33m0umsdbg0" path="res://assets/themes/global.tres" id="2"]
+[ext_resource type="PackedScene" uid="uid://dc4hempqd0638" path="res://scenes/ui/settings/settings_ui.tscn" id="5"]
+[ext_resource type="PackedScene" uid="uid://dugd88fmowfix" path="res://scenes/ui/dialog_background.tscn" id="7"]
+[ext_resource type="Script" path="res://scenes/ui/settings_dialog.gd" id="8"]
+
+[node name="SettingsDialog" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("2")
+script = ExtResource("8")
+
+[node name="DialogBackground" parent="." instance=ExtResource("7")]
+layout_mode = 0
+anchors_preset = 0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+layout_mode = 0
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 40
+theme_override_constants/margin_top = 20
+theme_override_constants/margin_right = 40
+theme_override_constants/margin_bottom = 20
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer"]
+layout_mode = 2
+
+[node name="HeaderHBoxContainer" type="HBoxContainer" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="SettingsLbl" type="Label" parent="MarginContainer/VBoxContainer/HeaderHBoxContainer"]
+layout_mode = 2
+theme_type_variation = &"TitleLabel"
+text = "Settings"
+
+[node name="ValidationMessageLbl" type="Label" parent="MarginContainer/VBoxContainer/HeaderHBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="SettingsUI" parent="MarginContainer/VBoxContainer" instance=ExtResource("5")]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_constants/separation = 40
+alignment = 2
+
+[node name="ResetBtn" type="Button" parent="MarginContainer/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+text = "Reset"
+flat = true
+
+[node name="HelpMessageContainer" type="MarginContainer" parent="MarginContainer/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="HelpMessageLbl" type="RichTextLabel" parent="MarginContainer/VBoxContainer/HBoxContainer/HelpMessageContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+bbcode_enabled = true
+
+[node name="CancelBtn" type="Button" parent="MarginContainer/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+text = "Cancel"
+flat = true
+
+[node name="OKBtn" type="Button" parent="MarginContainer/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+text = "OK"
+flat = true
+
+[connection signal="visibility_changed" from="." to="." method="_on_visibility_changed"]
+[connection signal="help_message_changed" from="MarginContainer/VBoxContainer/SettingsUI" to="." method="_on_SettingsUI_help_message_changed"]
+[connection signal="pressed" from="MarginContainer/VBoxContainer/HBoxContainer/ResetBtn" to="." method="_on_ResetBtn_pressed"]
+[connection signal="pressed" from="MarginContainer/VBoxContainer/HBoxContainer/CancelBtn" to="." method="_on_CancelBtn_pressed"]
+[connection signal="pressed" from="MarginContainer/VBoxContainer/HBoxContainer/OKBtn" to="." method="_on_OKBtn_pressed"]
