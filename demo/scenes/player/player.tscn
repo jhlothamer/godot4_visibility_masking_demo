@@ -1,0 +1,19 @@
+[gd_scene load_steps=4 format=3 uid="uid://bmplag3trqlcj"]
+
+[ext_resource type="Texture2D" uid="uid://c33yfkmqdnh6i" path="res://assets/images/player/player.png" id="1_gapj4"]
+[ext_resource type="Script" path="res://scenes/player/player.gd" id="1_papso"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_7sun0"]
+radius = 24.0
+height = 144.0
+
+[node name="Player" type="CharacterBody2D"]
+script = ExtResource("1_papso")
+
+[node name="Player" type="Sprite2D" parent="."]
+texture = ExtResource("1_gapj4")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CapsuleShape2D_7sun0")
+
+[node name="Camera2D" type="Camera2D" parent="."]

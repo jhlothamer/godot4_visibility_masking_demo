@@ -1,0 +1,156 @@
+[gd_scene load_steps=14 format=3 uid="uid://b36cb558rin5v"]
+
+[ext_resource type="PackedScene" uid="uid://bmplag3trqlcj" path="res://scenes/player/player.tscn" id="1_x8pyv"]
+[ext_resource type="Script" path="res://utils/shape_draw_2d.gd" id="2_midc1"]
+[ext_resource type="Script" path="res://utils/auto_light_occluder_2d.gd" id="3_p32lb"]
+[ext_resource type="PackedScene" uid="uid://imyjmrvhcss0" path="res://scenes/enemy/enemy.tscn" id="4_5q1gc"]
+
+[sub_resource type="Gradient" id="Gradient_lewjm"]
+offsets = PackedFloat32Array(0.0310345, 0.272414, 0.693103)
+colors = PackedColorArray(0.071875, 0.0456919, 0, 1, 0.15, 0.0953571, 0, 1, 0.359375, 0.227505, 0, 1)
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_0tqd0"]
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_1k1nw"]
+seamless = true
+color_ramp = SubResource("Gradient_lewjm")
+noise = SubResource("FastNoiseLite_0tqd0")
+
+[sub_resource type="OccluderPolygon2D" id="OccluderPolygon2D_g5c7p"]
+polygon = PackedVector2Array(256, -128, 256, -320, -384, -320, -384, 384, 193.667, 384, 192, 768, 1088, 768, 1088, 192, 1728, 192, 1728, 128, 1728, -128, 1728, -512, 896, -512, 896, -128, 960, -128, 962.589, -448.046, 1663.86, -448.535, 1663.12, -128, 1408, -128, 1408, -64, 1664, -64, 1664, 128, 1088, 128, 832, 128, 832, 192, 1024, 192, 1024, 704, 256, 704, 256, 384, 256, 192, 640, 192, 640, 128, 192, 128, 192, 320, -320, 320, -320, -256, 192, -256, 192, -64, 1216, -64, 1216, -128)
+
+[sub_resource type="Gradient" id="Gradient_3q1fr"]
+offsets = PackedFloat32Array(0.0522388, 0.998134)
+colors = PackedColorArray(1, 1, 1, 1, 0, 0, 0, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_mw120"]
+gradient = SubResource("Gradient_3q1fr")
+fill = 1
+fill_from = Vector2(0.5, 0.5)
+fill_to = Vector2(1, 0.5)
+
+[sub_resource type="Animation" id="Animation_f0n4b"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("PointLight2D:energy")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [3.0]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("PointLight2D2:energy")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [3.0]
+}
+
+[sub_resource type="Animation" id="Animation_2v7nq"]
+resource_name = "strobe_lights"
+length = 2.0
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("PointLight2D:energy")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [3.0, 1.0]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("PointLight2D2:energy")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 1.3),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [3.0, 6.0]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_s6062"]
+_data = {
+"RESET": SubResource("Animation_f0n4b"),
+"strobe_lights": SubResource("Animation_2v7nq")
+}
+
+[node name="GameLevel" type="Node2D"]
+
+[node name="TextureRect" type="TextureRect" parent="."]
+custom_minimum_size = Vector2(6000, 6000)
+offset_left = -3000.0
+offset_top = -3000.0
+offset_right = 3000.0
+offset_bottom = 3000.0
+texture = SubResource("NoiseTexture2D_1k1nw")
+stretch_mode = 1
+
+[node name="Player" parent="." instance=ExtResource("1_x8pyv")]
+
+[node name="Walls" type="StaticBody2D" parent="."]
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Walls"]
+polygon = PackedVector2Array(256, -128, 256, -320, -384, -320, -384, 384, 193.667, 384, 192, 768, 1088, 768, 1088, 192, 1728, 192, 1728, 128, 1728, -128, 1728, -512, 896, -512, 896, -128, 960, -128, 962.589, -448.046, 1663.86, -448.535, 1663.12, -128, 1408, -128, 1408, -64, 1664, -64, 1664, 128, 1088, 128, 832, 128, 832, 192, 1024, 192, 1024, 704, 256, 704, 256, 384, 256, 192, 640, 192, 640, 128, 192, 128, 192, 320, -320, 320, -320, -256, 192, -256, 192, -64, 1216, -64, 1216, -128)
+
+[node name="ShapeDraw2D" type="Node2D" parent="Walls/CollisionPolygon2D"]
+script = ExtResource("2_midc1")
+color = Color(0.329412, 0.329412, 0.329412, 1)
+texture = null
+non_rect_texture_offset = Vector2(0, 0)
+non_rect_texture_scale = Vector2(1, 1)
+nine_patch_draw_center = true
+nine_patch_region_rect = Rect2(0, 0, 0, 0)
+nine_patch_patch_left = 0
+nine_patch_patch_right = 0
+nine_patch_patch_top = 0
+nine_patch_patch_bottom = 0
+nine_patch_axis_stretch_horizontal = 0
+nine_patch_axis_stretch_vertical = 0
+
+[node name="AutoLightOccluder2D" type="LightOccluder2D" parent="Walls/CollisionPolygon2D"]
+position = Vector2(2, 0)
+occluder = SubResource("OccluderPolygon2D_g5c7p")
+script = ExtResource("3_p32lb")
+
+[node name="PointLight2D" type="PointLight2D" parent="."]
+position = Vector2(744, 480)
+color = Color(1, 0, 0.0784314, 1)
+energy = 3.0
+shadow_enabled = true
+texture = SubResource("GradientTexture2D_mw120")
+texture_scale = 20.0
+
+[node name="PointLight2D2" type="PointLight2D" parent="."]
+position = Vector2(1320, -248)
+color = Color(0.109804, 1, 0, 1)
+energy = 3.0
+shadow_enabled = true
+texture = SubResource("GradientTexture2D_mw120")
+texture_scale = 15.0
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+autoplay = "strobe_lights"
+libraries = {
+"": SubResource("AnimationLibrary_s6062")
+}
+
+[node name="Enemy" parent="." node_paths=PackedStringArray("_player") instance=ExtResource("4_5q1gc")]
+position = Vector2(-248, 200)
+_player = NodePath("../Player")
