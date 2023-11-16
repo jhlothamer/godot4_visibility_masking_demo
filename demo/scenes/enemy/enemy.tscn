@@ -11,6 +11,8 @@ height = 160.0
 script = ExtResource("1_3m1ki")
 
 [node name="Enemy" type="Sprite2D" parent="."]
+light_mask = 4
+visibility_layer = 4
 texture = ExtResource("1_72y83")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]

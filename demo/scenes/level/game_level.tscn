@@ -127,6 +127,7 @@ nine_patch_axis_stretch_vertical = 0
 [node name="AutoLightOccluder2D" type="LightOccluder2D" parent="Walls/CollisionPolygon2D"]
 position = Vector2(2, 0)
 occluder = SubResource("OccluderPolygon2D_g5c7p")
+occluder_light_mask = 3
 script = ExtResource("3_p32lb")
 
 [node name="PointLight2D" type="PointLight2D" parent="."]

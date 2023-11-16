@@ -1,0 +1,18 @@
+[gd_scene load_steps=3 format=3 uid="uid://g0733s81vaof"]
+
+[ext_resource type="PackedScene" uid="uid://b4ix0s33arjd6" path="res://scenes/vis_masking/view_mask_nodes.tscn" id="1_ejpuf"]
+[ext_resource type="Script" path="res://scenes/vis_masking/view_mask.gd" id="1_j45x3"]
+
+[node name="ViewMask" type="SubViewport"]
+editor_description = "The SubViewport that will generate the view mask"
+transparent_bg = true
+canvas_cull_mask = 4293918722
+render_target_update_mode = 4
+script = ExtResource("1_j45x3")
+
+[node name="ViewMaskNodes" parent="." instance=ExtResource("1_ejpuf")]
+
+[node name="MaskBackground" parent="ViewMaskNodes/FollowPlayer" index="0"]
+visible = false
+
+[editable path="ViewMaskNodes"]

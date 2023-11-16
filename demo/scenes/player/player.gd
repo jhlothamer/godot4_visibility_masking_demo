@@ -1,3 +1,4 @@
+class_name Player
 extends CharacterBody2D
 
 const JOY_AXIS_DEAD_ZONE = .2

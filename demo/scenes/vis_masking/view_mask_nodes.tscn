@@ -1,0 +1,49 @@
+[gd_scene load_steps=3 format=3 uid="uid://b4ix0s33arjd6"]
+
+[ext_resource type="Texture2D" uid="uid://d1yabuwgl04rx" path="res://assets/images/view_mask/view_mask.png" id="1_ab2hc"]
+
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_tlbvb"]
+light_mode = 2
+
+[node name="ViewMaskNodes" type="Node2D"]
+editor_description = "View mask scene will be a SubViewport - which makes editing it's children hard.  So, instead everything for the mask scene will be kept here."
+light_mask = 2
+visibility_layer = 2
+
+[node name="FollowPlayer" type="Node2D" parent="."]
+editor_description = "A remote transform under the player character will keep this and it's children in the same position and rotation"
+light_mask = 2
+visibility_layer = 2
+
+[node name="MaskBackground" type="ColorRect" parent="FollowPlayer"]
+editor_description = "This node will create a black background for the mask"
+light_mask = 2
+visibility_layer = 2
+custom_minimum_size = Vector2(3840, 3840)
+offset_left = -1920.0
+offset_top = -1920.0
+offset_right = 1920.0
+offset_bottom = 1920.0
+color = Color(0, 0, 0, 1)
+
+[node name="MaskLightCatcher" type="ColorRect" parent="FollowPlayer"]
+editor_description = "This node is lit by the mask light - otherwise no mask would be generated."
+light_mask = 2
+visibility_layer = 2
+material = SubResource("CanvasItemMaterial_tlbvb")
+custom_minimum_size = Vector2(3840, 3840)
+offset_left = -1920.0
+offset_top = -1920.0
+offset_right = 1920.0
+offset_bottom = 1920.0
+
+[node name="MaskLight" type="PointLight2D" parent="FollowPlayer"]
+light_mask = 2
+visibility_layer = 2
+energy = 4.43
+blend_mode = 2
+range_item_cull_mask = 2
+shadow_enabled = true
+shadow_item_cull_mask = 2
+texture = ExtResource("1_ab2hc")
+offset = Vector2(886, 0)

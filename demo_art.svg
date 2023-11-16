@@ -25,9 +25,9 @@
      inkscape:document-units="px"
      showgrid="false"
      showborder="false"
-     inkscape:zoom="0.67014518"
-     inkscape:cx="1023.6588"
-     inkscape:cy="993.81451"
+     inkscape:zoom="0.2369321"
+     inkscape:cx="3220.3319"
+     inkscape:cy="1439.2309"
      inkscape:window-width="2498"
      inkscape:window-height="1376"
      inkscape:window-x="2622"
@@ -35,11 +35,30 @@
      inkscape:window-maximized="1"
      inkscape:current-layer="layer1" />
   <defs
-     id="defs2" />
+     id="defs2">
+    <filter
+       inkscape:collect="always"
+       style="color-interpolation-filters:sRGB"
+       id="filter11"
+       x="-0.0035123192"
+       y="-0.0035123197"
+       width="1.0070246"
+       height="1.0070246">
+      <feGaussianBlur
+         inkscape:collect="always"
+         stdDeviation="0.74344096"
+         id="feGaussianBlur11" />
+    </filter>
+  </defs>
   <g
      inkscape:label="Layer 1"
      inkscape:groupmode="layer"
      id="layer1">
+    <path
+       id="rect10"
+       style="fill:#ffffff;stroke-width:0.79375;stroke-linecap:round;stroke-linejoin:round;paint-order:fill markers stroke"
+       d="m 1681.4925,-259.58013 v 507.99997 l -508,-253.9999833 z"
+       sodipodi:nodetypes="cccc" />
     <rect
        style="fill:none;stroke:#ff00ff;stroke-width:0.793749;stroke-linecap:round;stroke-linejoin:round;paint-order:fill markers stroke"
        id="rect1"
@@ -47,6 +66,12 @@
        height="284.95624"
        x="48.253952"
        y="97.095535" />
+    <circle
+       style="fill:#ffffff;stroke:none;stroke-width:0.79375;stroke-linecap:round;stroke-linejoin:round;paint-order:fill markers stroke"
+       id="path10"
+       cx="1194.6592"
+       cy="-5.580152"
+       r="21.166668" />
     <g
        id="g4"
        transform="matrix(0.69024546,0,0,0.6953063,125.99315,81.967412)"
@@ -182,5 +207,19 @@
            sodipodi:nodetypes="ssss" />
       </g>
     </g>
+    <path
+       id="path11"
+       style="mix-blend-mode:normal;fill:#ffffff;stroke-width:0.79375;stroke-linecap:round;stroke-linejoin:round;paint-order:fill markers stroke;filter:url(#filter11)"
+       d="M 1126.926,144.39478 652.79002,381.46299 a 21.166668,21.166668 0 0 0 -12.69741,-4.23488 21.166668,21.166668 0 0 0 -21.16667,21.16666 21.166668,21.166668 0 0 0 21.16667,21.16667 21.166668,21.166668 0 0 0 12.64625,-4.26021 L 1126.926,652.39477 Z"
+       inkscape:export-filename="demo/assets/images/view_mask/view_mask.png"
+       inkscape:export-xdpi="95.9993"
+       inkscape:export-ydpi="95.9993" />
+    <rect
+       style="fill:#ffffff;stroke:#ffffff;stroke-width:0.793751;stroke-linecap:round;stroke-linejoin:round;paint-order:fill markers stroke"
+       id="rect11"
+       width="16.139584"
+       height="16.139584"
+       x="718.47418"
+       y="-14.712237" />
   </g>
 </svg>

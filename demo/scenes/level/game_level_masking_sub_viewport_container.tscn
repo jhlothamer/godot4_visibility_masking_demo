@@ -1,0 +1,69 @@
+[gd_scene load_steps=8 format=3 uid="uid://je5upqs2xodr"]
+
+[ext_resource type="PackedScene" uid="uid://b36cb558rin5v" path="res://scenes/level/game_level.tscn" id="1_3lp73"]
+[ext_resource type="Shader" path="res://scenes/vis_masking/vis_mask.gdshader" id="1_irc2j"]
+[ext_resource type="Script" path="res://scenes/level/game_level_masking_sub_viewport_container.gd" id="1_y6bba"]
+[ext_resource type="PackedScene" uid="uid://g0733s81vaof" path="res://scenes/vis_masking/view_mask.tscn" id="2_81f1i"]
+
+[sub_resource type="ViewportTexture" id="ViewportTexture_a01ql"]
+viewport_path = NodePath("ViewMask")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_yphv2"]
+resource_local_to_scene = true
+shader = ExtResource("1_irc2j")
+shader_parameter/mask_texture = SubResource("ViewportTexture_a01ql")
+
+[sub_resource type="ViewportTexture" id="ViewportTexture_2cbnm"]
+viewport_path = NodePath(".")
+
+[node name="game_level_masking_sub_viewport_container" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_y6bba")
+
+[node name="BackgroundCanvasLayer" type="CanvasLayer" parent="."]
+layer = -1
+
+[node name="ColorRect" type="ColorRect" parent="BackgroundCanvasLayer"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 1)
+
+[node name="SubViewportContainer" type="SubViewportContainer" parent="."]
+material = SubResource("ShaderMaterial_yphv2")
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+stretch = true
+
+[node name="SubViewport" type="SubViewport" parent="SubViewportContainer"]
+handle_input_locally = false
+canvas_cull_mask = 4294967293
+size = Vector2i(1920, 1080)
+render_target_update_mode = 4
+
+[node name="GameLevel" parent="SubViewportContainer/SubViewport" instance=ExtResource("1_3lp73")]
+
+[node name="ViewMask" parent="." node_paths=PackedStringArray("game_sub_viewport", "player") instance=ExtResource("2_81f1i")]
+game_sub_viewport = NodePath("../SubViewportContainer/SubViewport")
+player = NodePath("../SubViewportContainer/SubViewport/GameLevel/Player")
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="Sprite2D" type="Sprite2D" parent="CanvasLayer"]
+position = Vector2(432, 232)
+scale = Vector2(0.2, 0.2)
+texture = SubResource("ViewportTexture_2cbnm")
+centered = false
+
+[editable path="SubViewportContainer/SubViewport/GameLevel"]
