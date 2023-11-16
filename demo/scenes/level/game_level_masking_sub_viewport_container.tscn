@@ -1,9 +1,17 @@
-[gd_scene load_steps=7 format=3 uid="uid://je5upqs2xodr"]
+[gd_scene load_steps=11 format=3 uid="uid://je5upqs2xodr"]
 
 [ext_resource type="PackedScene" uid="uid://b36cb558rin5v" path="res://scenes/level/game_level.tscn" id="1_3lp73"]
 [ext_resource type="Shader" path="res://scenes/vis_masking/vis_mask.gdshader" id="1_irc2j"]
 [ext_resource type="Script" path="res://scenes/level/game_level_masking_sub_viewport_container.gd" id="1_y6bba"]
 [ext_resource type="PackedScene" uid="uid://g0733s81vaof" path="res://scenes/vis_masking/view_mask.tscn" id="2_81f1i"]
+[ext_resource type="Shader" path="res://scenes/level/desaturate.gdshader" id="2_mr5m0"]
+[ext_resource type="Script" path="res://utils/sub_viewport_ex.gd" id="3_mu8y0"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_4awhh"]
+shader = ExtResource("2_mr5m0")
+
+[sub_resource type="ViewportTexture" id="ViewportTexture_6x51t"]
+viewport_path = NodePath("BackgroundSubViewportEx")
 
 [sub_resource type="ViewportTexture" id="ViewportTexture_a01ql"]
 viewport_path = NodePath("ViewMask")
@@ -32,6 +40,17 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 color = Color(0, 0, 0, 1)
+
+[node name="DesaturatedBackgroundSprite2D" type="Sprite2D" parent="."]
+material = SubResource("ShaderMaterial_4awhh")
+position = Vector2(0, 14)
+texture = SubResource("ViewportTexture_6x51t")
+centered = false
+
+[node name="BackgroundSubViewportEx" type="SubViewport" parent="." node_paths=PackedStringArray("main_sub_viewport")]
+canvas_cull_mask = 4293918721
+script = ExtResource("3_mu8y0")
+main_sub_viewport = NodePath("../SubViewportContainer/SubViewport")
 
 [node name="SubViewportContainer" type="SubViewportContainer" parent="."]
 material = SubResource("ShaderMaterial_yphv2")
