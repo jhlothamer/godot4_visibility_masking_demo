@@ -12,7 +12,4 @@ script = ExtResource("1_j45x3")
 
 [node name="ViewMaskNodes" parent="." instance=ExtResource("1_ejpuf")]
 
-[node name="MaskBackground" parent="ViewMaskNodes/FollowPlayer" index="0"]
-visible = false
-
 [editable path="ViewMaskNodes"]

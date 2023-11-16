@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=3 uid="uid://je5upqs2xodr"]
+[gd_scene load_steps=7 format=3 uid="uid://je5upqs2xodr"]
 
 [ext_resource type="PackedScene" uid="uid://b36cb558rin5v" path="res://scenes/level/game_level.tscn" id="1_3lp73"]
 [ext_resource type="Shader" path="res://scenes/vis_masking/vis_mask.gdshader" id="1_irc2j"]
@@ -12,9 +12,6 @@ viewport_path = NodePath("ViewMask")
 resource_local_to_scene = true
 shader = ExtResource("1_irc2j")
 shader_parameter/mask_texture = SubResource("ViewportTexture_a01ql")
-
-[sub_resource type="ViewportTexture" id="ViewportTexture_2cbnm"]
-viewport_path = NodePath(".")
 
 [node name="game_level_masking_sub_viewport_container" type="Control"]
 layout_mode = 3
@@ -57,13 +54,5 @@ render_target_update_mode = 4
 [node name="ViewMask" parent="." node_paths=PackedStringArray("game_sub_viewport", "player") instance=ExtResource("2_81f1i")]
 game_sub_viewport = NodePath("../SubViewportContainer/SubViewport")
 player = NodePath("../SubViewportContainer/SubViewport/GameLevel/Player")
-
-[node name="CanvasLayer" type="CanvasLayer" parent="."]
-
-[node name="Sprite2D" type="Sprite2D" parent="CanvasLayer"]
-position = Vector2(432, 232)
-scale = Vector2(0.2, 0.2)
-texture = SubResource("ViewportTexture_2cbnm")
-centered = false
 
 [editable path="SubViewportContainer/SubViewport/GameLevel"]
