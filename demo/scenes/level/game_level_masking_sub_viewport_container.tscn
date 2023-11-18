@@ -43,7 +43,6 @@ color = Color(0, 0, 0, 1)
 
 [node name="DesaturatedBackgroundSprite2D" type="Sprite2D" parent="."]
 material = SubResource("ShaderMaterial_4awhh")
-position = Vector2(0, 14)
 texture = SubResource("ViewportTexture_6x51t")
 centered = false
 

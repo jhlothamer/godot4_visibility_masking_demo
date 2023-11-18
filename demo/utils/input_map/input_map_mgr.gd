@@ -64,14 +64,14 @@ func _read_settings_cfg(settings_data:Dictionary) -> void:
 func _interpret_bindings_column_types(type_string_array: Array) -> void:
 	bindings_column_types = []
 	var i = 0
-	for type_string in type_string_array:
+	for column_type_string in type_string_array:
 		i += 1
 		if i > bindings_per_action:
 			break
-		if type_string == "any" or type_string == "*":
+		if column_type_string == "any" or column_type_string == "*":
 			bindings_column_types.append(BINDINGS_TYPE_TO_TYPE_NAME.keys())
 		else:
-			var parts = type_string.split("|")
+			var parts = column_type_string.split("|")
 			var binding_array := []
 			for part in parts:
 				if !BINDINGS_TYPE_TO_TYPE_NAME.has(part):

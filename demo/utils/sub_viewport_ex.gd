@@ -58,23 +58,3 @@ func _process(_delta: float) -> void:
 	if cam.limit_right != main_cam.limit_right:
 		cam.limit_right = main_cam.limit_right
 
-
-func _input(event: InputEvent) -> void:
-	if event is InputEventKey:
-		var ek:InputEventKey = event
-		if ek.keycode == KEY_P:
-			var main_cam := main_sub_viewport.get_camera_2d()
-			var cam := get_camera_2d()
-			print("main cam pos: %s" % main_cam.global_position)
-			print("this cam pos: %s" % cam.global_position)
-
-func print_cam_data() -> void:
-	var main_cam := main_sub_viewport.get_camera_2d()
-	var cam := get_camera_2d()
-	print("main cam pos: %s" % main_cam.global_position)
-	print("this cam pos: %s" % cam.global_position)
-
-
-
-
-
