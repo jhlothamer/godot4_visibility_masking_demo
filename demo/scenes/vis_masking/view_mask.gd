@@ -6,6 +6,7 @@ extends SubViewport
 # reference to the "player" - or whatever the view mask should follow in the game
 @export var player:Player
 
+
 # the mask light that actually creates the mask
 @onready var _mask_light:PointLight2D = $ViewMaskNodes/FollowPlayer/MaskLight
 # all nodes in the view mask are under one node for convenience
@@ -27,7 +28,7 @@ func _ready() -> void:
 	size = game_sub_viewport.size
 	
 	# light 2d's need to be re-added to the tree so they will interact with occluders, etc.
-	# from the game SubViewport.  (This is a small bug that may be cleared up at some point.)
+	# from the game SubViewport.  (Hopefully in the future we won't need to re-add the light.)
 	var mask_light_parent = _mask_light.get_parent()
 	mask_light_parent.remove_child(_mask_light)
 	mask_light_parent.add_child(_mask_light)
@@ -44,18 +45,8 @@ func _setup_player_remote_transform() -> void:
 	rt.remote_path = _follow_Player.get_path()
 
 
-
 # this function adds a camera to the mask view - a duplicate of the game view's camera
 func _add_camera() -> void:
-	# wait 2 frames - so the CameraLimitArea2D gets chance to set the main view cam's limits
-	await get_tree().physics_frame
-	await get_tree().physics_frame
-	
-	# NOTE: since camera limits will change during the game
-	#       we'll have to somehow monitor for that change
-	#       And for that matter, active cameras change in some
-	#       games!!
-	
 	var other_view_camera := game_sub_viewport.get_camera_2d()
 	if !other_view_camera:
 		return

@@ -25,9 +25,9 @@
      inkscape:document-units="px"
      showgrid="false"
      showborder="false"
-     inkscape:zoom="0.2369321"
-     inkscape:cx="3220.3319"
-     inkscape:cy="1439.2309"
+     inkscape:zoom="5.3611614"
+     inkscape:cx="1208.6001"
+     inkscape:cy="1616.6273"
      inkscape:window-width="2498"
      inkscape:window-height="1376"
      inkscape:window-x="2622"
@@ -221,5 +221,14 @@
        height="16.139584"
        x="718.47418"
        y="-14.712237" />
+    <circle
+       style="fill:#000000;stroke:#1a1a1a;stroke-width:0.529167;stroke-linecap:round;stroke-linejoin:round;paint-order:fill markers stroke"
+       id="path12"
+       cx="323.22836"
+       cy="420.65646"
+       r="10.31875"
+       inkscape:export-filename="demo/assets/images/environment/tree_trunk.png"
+       inkscape:export-xdpi="95.9993"
+       inkscape:export-ydpi="95.9993" />
   </g>
 </svg>
