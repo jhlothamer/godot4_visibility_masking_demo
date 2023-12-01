@@ -1,10 +1,10 @@
 [gd_scene load_steps=24 format=3 uid="uid://b36cb558rin5v"]
 
 [ext_resource type="PackedScene" uid="uid://bmplag3trqlcj" path="res://scenes/player/player.tscn" id="1_x8pyv"]
-[ext_resource type="Script" path="res://utils/temp/shape_draw_2d.gd" id="2_midc1"]
 [ext_resource type="Script" path="res://addons/godot_helper_pack/core/2d/camera/behavior/camera_limiter.gd" id="2_wgvgk"]
 [ext_resource type="Script" path="res://utils/auto_light_occluder_2d.gd" id="3_p32lb"]
 [ext_resource type="PackedScene" uid="uid://imyjmrvhcss0" path="res://scenes/enemy/enemy.tscn" id="4_5q1gc"]
+[ext_resource type="Script" path="res://addons/godot_helper_pack/core/2d/shape/shape_draw_2d.gd" id="4_q212v"]
 [ext_resource type="Script" path="res://addons/godot_helper_pack/core/2d/util/distribution/random_distribution_area.gd" id="5_f57w3"]
 [ext_resource type="Texture2D" uid="uid://dsxgc4nt5xyli" path="res://assets/images/environment/tree_trunk.png" id="5_qpfmf"]
 [ext_resource type="Script" path="res://addons/godot_helper_pack/core/2d/util/distribution/random_distribution_area_layer.gd" id="6_3j0vq"]
@@ -158,8 +158,14 @@ metadata/_edit_lock_ = true
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Walls"]
 polygon = PackedVector2Array(256, -128, 256, -320, -384, -320, -384, 384, 193.667, 384, 192, 768, 1088, 768, 1088, 192, 1728, 192, 1728, 128, 1728, -128, 1728, -512, 896, -512, 896, -320, 960, -320, 962.589, -448.046, 1663.86, -448.535, 1663.12, -128, 1408, -128, 1408, -64, 1664, -64, 1664, 128, 1088, 128, 832, 128, 832, 192, 1024, 192, 1024, 704, 256, 704, 256, 384, 256, 192, 640, 192, 640, 128, 192, 128, 192, 320, -320, 320, -320, -256, 192, -256, 192, -64, 1216, -64, 1216, -128)
 
+[node name="AutoLightOccluder2D" type="LightOccluder2D" parent="Walls/CollisionPolygon2D"]
+position = Vector2(2, 0)
+occluder = SubResource("OccluderPolygon2D_g5c7p")
+occluder_light_mask = 3
+script = ExtResource("3_p32lb")
+
 [node name="ShapeDraw2D" type="Node2D" parent="Walls/CollisionPolygon2D"]
-script = ExtResource("2_midc1")
+script = ExtResource("4_q212v")
 color = Color(0.329412, 0.329412, 0.329412, 1)
 texture = null
 non_rect_texture_offset = Vector2(0, 0)
@@ -172,12 +178,6 @@ nine_patch_patch_top = 0
 nine_patch_patch_bottom = 0
 nine_patch_axis_stretch_horizontal = 0
 nine_patch_axis_stretch_vertical = 0
-
-[node name="AutoLightOccluder2D" type="LightOccluder2D" parent="Walls/CollisionPolygon2D"]
-position = Vector2(2, 0)
-occluder = SubResource("OccluderPolygon2D_g5c7p")
-occluder_light_mask = 3
-script = ExtResource("3_p32lb")
 
 [node name="PointLight2D" type="PointLight2D" parent="."]
 position = Vector2(744, 480)
