@@ -17,3 +17,4 @@ texture = ExtResource("1_gapj4")
 shape = SubResource("CapsuleShape2D_7sun0")
 
 [node name="Camera2D" type="Camera2D" parent="."]
+zoom = Vector2(0.6, 0.6)

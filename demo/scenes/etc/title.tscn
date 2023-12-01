@@ -59,7 +59,7 @@ alignment = 2
 layout_mode = 2
 text = "New Game"
 alignment = 0
-scene_to_load = "res://scenes/etc/how_to_play.tscn"
+scene_to_load = "res://scenes/level/game_level_masking_sub_viewport_container.tscn"
 grab_focus_on_start = true
 
 [node name="SettingsBtn" parent="ButtonsMarginContainer/VBoxContainer" instance=ExtResource("4")]

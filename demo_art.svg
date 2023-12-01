@@ -25,9 +25,9 @@
      inkscape:document-units="px"
      showgrid="false"
      showborder="false"
-     inkscape:zoom="5.3611614"
-     inkscape:cx="1208.6001"
-     inkscape:cy="1616.6273"
+     inkscape:zoom="1.8954568"
+     inkscape:cx="6073.7338"
+     inkscape:cy="5413.4708"
      inkscape:window-width="2498"
      inkscape:window-height="1376"
      inkscape:window-x="2622"
@@ -40,7 +40,7 @@
        inkscape:collect="always"
        style="color-interpolation-filters:sRGB"
        id="filter11"
-       x="-0.0035123192"
+       x="-0.0035123189"
        y="-0.0035123197"
        width="1.0070246"
        height="1.0070246">
@@ -48,6 +48,19 @@
          inkscape:collect="always"
          stdDeviation="0.74344096"
          id="feGaussianBlur11" />
+    </filter>
+    <filter
+       inkscape:collect="always"
+       style="color-interpolation-filters:sRGB"
+       id="filter14"
+       x="-0.0046092325"
+       y="-0.0030107602"
+       width="1.0092185"
+       height="1.0060215">
+      <feGaussianBlur
+         inkscape:collect="always"
+         stdDeviation="1.1708124"
+         id="feGaussianBlur14" />
     </filter>
   </defs>
   <g
@@ -210,7 +223,7 @@
     <path
        id="path11"
        style="mix-blend-mode:normal;fill:#ffffff;stroke-width:0.79375;stroke-linecap:round;stroke-linejoin:round;paint-order:fill markers stroke;filter:url(#filter11)"
-       d="M 1126.926,144.39478 652.79002,381.46299 a 21.166668,21.166668 0 0 0 -12.69741,-4.23488 21.166668,21.166668 0 0 0 -21.16667,21.16666 21.166668,21.166668 0 0 0 21.16667,21.16667 21.166668,21.166668 0 0 0 12.64625,-4.26021 L 1126.926,652.39477 Z"
+       d="M 1113.7745,181.5099 639.63847,418.57811 a 21.166668,21.166668 0 0 0 -12.69741,-4.23488 21.166668,21.166668 0 0 0 -21.16667,21.16666 21.166668,21.166668 0 0 0 21.16667,21.16667 21.166668,21.166668 0 0 0 12.64625,-4.26021 l 474.18719,237.09354 z"
        inkscape:export-filename="demo/assets/images/view_mask/view_mask.png"
        inkscape:export-xdpi="95.9993"
        inkscape:export-ydpi="95.9993" />
@@ -222,7 +235,7 @@
        x="718.47418"
        y="-14.712237" />
     <circle
-       style="fill:#000000;stroke:#1a1a1a;stroke-width:0.529167;stroke-linecap:round;stroke-linejoin:round;paint-order:fill markers stroke"
+       style="fill:#000000;stroke:#000000;stroke-width:0.529167;stroke-linecap:round;stroke-linejoin:round;paint-order:fill markers stroke;stroke-opacity:1"
        id="path12"
        cx="323.22836"
        cy="420.65646"
@@ -230,5 +243,24 @@
        inkscape:export-filename="demo/assets/images/environment/tree_trunk.png"
        inkscape:export-xdpi="95.9993"
        inkscape:export-ydpi="95.9993" />
+    <path
+       id="rect2"
+       style="fill:#ffffff;stroke:#ffffff;stroke-width:0.529167;stroke-linecap:round;stroke-linejoin:round;paint-order:fill markers stroke"
+       d="M 2342.3785,1313.9672 1831.468,803.38002 2342.3785,292.79257"
+       sodipodi:nodetypes="ccc" />
+    <circle
+       style="fill:#ffffff;stroke:none;stroke-width:0.79375;stroke-linecap:round;stroke-linejoin:round;paint-order:fill markers stroke"
+       id="circle13"
+       cx="1831.2035"
+       cy="803.37982"
+       r="21.166668" />
+    <path
+       id="path13"
+       style="fill:#ffffff;stroke:#ffffff;stroke-width:0.529167;stroke-linecap:round;stroke-linejoin:round;paint-order:fill markers stroke;filter:url(#filter14)"
+       d="M 1476.2448,892.50572 979.90607,1388.2661 c -3.97905,-4.0539 -9.42052,-6.3383 -15.10089,-6.3396 -11.69,0 -21.16663,9.4766 -21.16667,21.1666 -2e-5,11.69 9.47663,21.1667 21.16667,21.1667 5.67348,-0.02 11.10148,-2.3166 15.06626,-6.3748 l 496.37336,495.7956 c 0,0 134.4463,-334.708 134.4317,-510.7595 -0.015,-175.9406 -134.4317,-510.41538 -134.4317,-510.41538 z"
+       inkscape:export-filename="demo/assets/images/view_mask/view_mask_90.png"
+       inkscape:export-xdpi="95.9993"
+       inkscape:export-ydpi="95.9993"
+       sodipodi:nodetypes="cccscccac" />
   </g>
 </svg>

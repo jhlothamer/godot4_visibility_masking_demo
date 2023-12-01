@@ -1,0 +1,93 @@
+[gd_scene load_steps=3 format=3 uid="uid://c35qgimamys8d"]
+
+[ext_resource type="Script" path="res://addons/godot_helper_pack/core/2d/util/distribution/distribution_editor_plugin.gd" id="1"]
+[ext_resource type="Script" path="res://addons/godot_helper_pack/core/control/pressable_menu_button.gd" id="2"]
+
+[node name="DistributionEditorPlugin" type="MarginContainer"]
+custom_minimum_size = Vector2(600, 300)
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_right = -424.0
+offset_bottom = -300.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+script = ExtResource("1")
+
+[node name="CenterContainer" type="CenterContainer" parent="."]
+offset_right = 600.0
+offset_bottom = 300.0
+
+[node name="Label" type="Label" parent="CenterContainer"]
+visible = false
+offset_left = 161.0
+offset_top = 85.0
+offset_right = 438.0
+offset_bottom = 215.0
+text = "Please select a 
+MultiMeshInstanceDistributionArea
+or
+RandomDistributionArea
+node"
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+offset_right = 600.0
+offset_bottom = 300.0
+
+[node name="MenuHBoxContainer" type="HBoxContainer" parent="VBoxContainer"]
+offset_right = 600.0
+offset_bottom = 31.0
+
+[node name="DistributeMenuBtn" type="MenuButton" parent="VBoxContainer/MenuHBoxContainer"]
+offset_right = 101.0
+offset_bottom = 31.0
+text = "Distribution"
+switch_on_hover = true
+item_count = 3
+popup/item_0/text = "Distribute"
+popup/item_0/id = 0
+popup/item_1/text = "Clear"
+popup/item_1/id = 1
+popup/item_2/text = "Calc Compact Distribution Radius"
+popup/item_2/id = 2
+script = ExtResource("2")
+
+[node name="CollisionPolygonsMenuBtn" type="MenuButton" parent="VBoxContainer/MenuHBoxContainer"]
+offset_left = 105.0
+offset_right = 343.0
+offset_bottom = 31.0
+text = "Static Body Collision Polygons"
+switch_on_hover = true
+item_count = 2
+popup/item_0/text = "Create Collision Polygons"
+popup/item_0/id = 0
+popup/item_1/text = "Clear Collision Polygons"
+popup/item_1/id = 1
+script = ExtResource("2")
+
+[node name="RandDistArealDistributeMenuBtn" type="MenuButton" parent="VBoxContainer/MenuHBoxContainer"]
+visible = false
+offset_left = 347.0
+offset_right = 448.0
+offset_bottom = 31.0
+text = "Distribution"
+switch_on_hover = true
+item_count = 2
+popup/item_0/text = "Distribute"
+popup/item_0/id = 0
+popup/item_1/text = "Clear"
+popup/item_1/id = 1
+script = ExtResource("2")
+
+[node name="StatusTextEdit" type="TextEdit" parent="VBoxContainer"]
+offset_top = 35.0
+offset_right = 600.0
+offset_bottom = 300.0
+size_flags_vertical = 3
+highlight_current_line = true
+
+[connection signal="id_pressed" from="VBoxContainer/MenuHBoxContainer/DistributeMenuBtn" to="." method="_on_DistributeMenuBtn_id_pressed"]
+[connection signal="id_pressed" from="VBoxContainer/MenuHBoxContainer/CollisionPolygonsMenuBtn" to="." method="_on_CollisionPolygonsMenuBtn_id_pressed"]
+[connection signal="id_pressed" from="VBoxContainer/MenuHBoxContainer/RandDistArealDistributeMenuBtn" to="." method="_on_RandDistArealDistributeMenuBtn_id_pressed"]

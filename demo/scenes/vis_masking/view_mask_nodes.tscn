@@ -1,6 +1,6 @@
 [gd_scene load_steps=3 format=3 uid="uid://b4ix0s33arjd6"]
 
-[ext_resource type="Texture2D" uid="uid://d1yabuwgl04rx" path="res://assets/images/view_mask/view_mask.png" id="1_ab2hc"]
+[ext_resource type="Texture2D" uid="uid://dp35hmcevcsv5" path="res://assets/images/view_mask/view_mask_90.png" id="1_bsndu"]
 
 [sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_tlbvb"]
 light_mode = 2
@@ -39,8 +39,8 @@ blend_mode = 2
 range_item_cull_mask = 2
 shadow_enabled = true
 shadow_item_cull_mask = 2
-texture = ExtResource("1_ab2hc")
-offset = Vector2(886, 0)
+texture = ExtResource("1_bsndu")
+offset = Vector2(1186, 0)
 
 [node name="RemoteTransform2D" type="RemoteTransform2D" parent="FollowPlayer"]
 editor_description = "Linked to FollowPlayerNoRotate node - background doesn't need to rotate"
