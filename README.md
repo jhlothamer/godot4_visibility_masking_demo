@@ -148,13 +148,13 @@ Hopefully this will be fixed in a future release.
 As you run the demo, you may notice something odd in the shadows created by the tree truncs and other view occluding things. The shadows waver back and forth. This does not occur when moving the character with the movement keys, but only when the mouse is moved so that the character and masking light are rotated.
 
 <p align="center">
-https://github.com/jhlothamer/godot4_visibility_masking_demo/assets/30469760/16422899-d45b-49dc-bbe2-d6f0c09172ac
+<img src="readme_images/vis_masking_wavy_shadows.gif" />
 </p>
 
 This issue is also present in the classic survival horror game Darkwood, though not as pronounced.
 
 <p align="center">
-https://github.com/jhlothamer/godot4_visibility_masking_demo/assets/30469760/b3fd1fed-4921-465a-b242-e48d21c7de42
+<img src="readme_images/vis_masking_wavy_shadows_darkwood.gif" />
 </p>
 
 Since moving a light but not rotating it does not produce this waving effect, it should be possible to use one masking light to generate a shadow mask for the entire screen and then use a second light with shadows turned off to mask down to the view cone.
