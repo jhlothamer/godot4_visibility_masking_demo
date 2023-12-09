@@ -157,7 +157,10 @@ This issue is also present in the classic survival horror game Darkwood, though 
 <img src="readme_images/vis_masking_wavy_shadows_darkwood.gif" />
 </p>
 
-Since moving a light but not rotating it does not produce this waving effect, it should be possible to use one masking light to generate a shadow mask for the entire screen and then use a second light with shadows turned off to mask down to the view cone.
+It should be possible to fix this by using two masking lights : one that lights the entire screen but has shadows enabled and is not rotated with the player, and another that does rotate with the player but does not have shadows enabled.  In effect, the rotating light would mask the other light's generated mask.  It's not clear if all this can be done without the need for yet more SubViewports or perhaps the BackBufferCopy node.  I will update this section of the readme if I figure out the solution to this as well as include it in the demo.
+
+
+
 
 
 
