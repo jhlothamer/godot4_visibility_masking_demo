@@ -104,28 +104,28 @@ A work around for this is possible. Rather than use a SubViewportContainer, inst
 The following is a script for a Node2D node that will do the event forwarding described above.
 
 
-class_name subViewportInputShim
-extends Node2D
-
-var _sub_viewport: SubViewport
-
-func _ready() -> void:
-for child in get_children():
-if child is SubViewport:
-_sub_viewport = child
-if _sub_viewport:
-return
-# we did not find a SubViewport child - don't process inputs
-set_process_input(false)
-set_process_unhandled_input(false)
-
-func _input(event: InputEvent) -> void:
-# forward event to SubViewport child
-_sub_viewport.push_input(event)
-
-func _unhandled_input(event: InputEvent) -> void:
-# forward event to SubViewport child
-_sub_viewport.push_input(event)
+    class_name subViewportInputShim
+    extends Node2D
+    
+    var _sub_viewport: SubViewport
+    
+    func _ready() -> void:
+        for child in get_children():
+            if child is SubViewport:
+                _sub_viewport = child
+        if _sub_viewport:
+            return
+        \# we did not find a SubViewport child - don't process inputs
+        set_process_input(false)
+        set_process_unhandled_input(false)
+    
+    func _input(event: InputEvent) -> void:
+        \# forward event to SubViewport child
+        _sub_viewport.push_input(event)
+    
+    func _unhandled_input(event: InputEvent) -> void:
+        \# forward event to SubViewport child
+        _sub_viewport.push_input(event)
 
 
 ### ViewportTexture Shader Parameter Loses Path to SubViewport Node
