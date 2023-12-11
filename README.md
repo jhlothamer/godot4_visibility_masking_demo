@@ -1,4 +1,9 @@
 # Visibility Masking in Godot 4.1+
+
+<p align="center">
+<img src="readme_images/demo_preview.png" />
+</p>
+
 This demo shows how to create a visibility masking effect in Godot 4.1. This effect simulates the view cone of the player for a top down 2D game by masking out things not in the player's line of site. The classic horror survival game Darkwood is a great of example of this technique.
 
 ## Credit Where It is Greatly Deserved
