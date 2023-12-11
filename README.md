@@ -2,11 +2,11 @@
 This demo shows how to create a visibility masking effect in Godot 4.1. This effect simulates the view cone of the player for a top down 2D game by masking out things not in the player's line of site. The classic horror survival game Darkwood is a great of example of this technique.
 
 ## Credit Where It is Greatly Deserved
-The technique in this demo, and that I will attempt to explain below, was first brought to my attention in the video [Godot 4 visibility mask tutorial redux](https://www.youtube.com/watch?v=iKRJqx9KCJU). In this video the author shows roughly how to accomplish creating a visibility mask using the SubViewport node. In the video, tile maps with occluders are used, and separate copies of the tilemap are kept so that the main viewport and mask viewport can have something to render. This demo does away with any need to copy anything using a common technique for 2D split-screen games in the Godot engine.
+The technique in this demo, and that I will attempt to explain below, was first brought to my attention in the video [Godot 4 visibility mask tutorial redux](https://www.youtube.com/watch?v=iKRJqx9KCJU). In this video the author shows roughly how to accomplish creating a visibility mask using the SubViewport node. In the video, tile maps with occluders are used, and separate copies of the tilemap are kept so that the main viewport and mask viewport can have something to render. This demo does away with coping nodes by using a common technique for 2D split-screen games in the Godot engine.
 
 ## The General Idea
 
-This technique uses a light along with light occluders to generate a light mask. This is done by using a light texture that matches the desired visibility area and a texture that is set to only be visible when it is lit. Placing this within a SubViewport node gives us access to a texture that we can then use as a mask.
+This technique uses a light along with light occluders to generate a texture that can be used for masking. This is done by using a light texture that matches the desired visibility area and a texture that is set to only be visible when it is lit. Placing this within a SubViewport node gives us access to a texture that we can then use as a mask.
 
 <p align="center">
 <img src="readme_images/mask_created_by_light.png" />
@@ -23,12 +23,12 @@ In Godot we can set the world_2d properties of two or more SubViewports to the s
 
 What is nice about this technique is that game objects (nodes for Godot) only need to be placed under one of the SubViewports. This allows us to define the entire game level under one viewport and just link up the other viewports to the main viewport by sharing it's World2D.
 
-We will use this fact to our advantage and have everything for the game world under one main viewport, and everything for the mask under another viewport. But these viewports will share a World2D, and so will see eachother's game objects.
+We will use this fact to our advantage and have everything for the game world under one main viewport, and everything for the mask under another viewport. But these viewports will share a World2D, and so will see each other's game objects.
 
 ## Controlling What a SubViewport "Sees"
 Another useful thing about SubViewports is their Canvas Cull Mask property, which is a bitmask that sets what rendering layers they see. And this relates to the Visibility Layer bitmask in CanvasItem nodes (2D game objects in Godot).
 
-In generating a visibility mask we want to designate one of the rendering layers to be seen by the masking Subviewport only. For the demo I used Layer 2 for this as Layer 1 is used by default by every CanvasItem. Layer 3 is reserved for things like enemies, which we only want to appear when they are in view and not part of a desaturated background. (More on this background later.)
+In generating a visibility mask we want to designate one of the rendering layers to be seen by the masking SubViewport only. For the demo I used Layer 2 for this as Layer 1 is used by default by every CanvasItem. Layer 3 is reserved for things like enemies, which we only want to appear when they are in view and not part of a desaturated background. (More on this background later.)
 
 <p align="center">
 <img src="readme_images/rendering_layers.png" />
@@ -38,19 +38,19 @@ Now we only need to have light occluders that play a part in forming the view ma
 
 ## The Setup
 
-Now that we've covered generating a mask with a light, sharing a World2D between SubViewports so we don't have to duplicate nodes and the fact that the only thing in the game world we need to be visible to the mask Subviewport are the light occluders, here's a diagram of how the game scene is setup.
+Now that we've covered generating a mask with a light, sharing a World2D between SubViewports so we don't have to duplicate nodes and the fact that the only thing in the game world we need to be visible to the mask SubViewport are the light occluders, here's a diagram of how the game scene is setup.
 
 <p align="center">
 <img src="readme_images/game_level_setup.png" />
 </p>
 
-Note that the game level is it's own scene as you cannot edit nodes visually once they are under a Subviewport. Same is true for the mask SubViewport's child nodes.
+Note that the game level is it's own scene as you cannot edit nodes visually once they are under a SubViewport. Same is true for the mask SubViewport's child nodes.
 
 We've covered everything in the above diagram except for maybe the TextureRect node. That is present so that the mask light will have something to light. It also has a CanvasItemMaterial added to it with the Light Mode set to Light Only. This means that the texture will only show up when it is lit, and that is what forms the mask.
 
 ## RemoteTransforms
 
-What's left is setting up remote transforms between the player and the masking light, and the camera's in each of the subviewports.
+What's left is setting up remote transforms between the player and the masking light, and the camera's in each of the SubViewports.
 
 In Godot this is easy as there is node called RemoteTransform2D. So, all we have to do is get a reference to the player node and add a RemoteTransform2D under it that references the masking light.
 

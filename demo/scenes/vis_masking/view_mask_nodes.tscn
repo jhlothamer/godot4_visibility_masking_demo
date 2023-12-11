@@ -20,11 +20,11 @@ editor_description = "This node is lit by the mask light - otherwise no mask wou
 light_mask = 2
 visibility_layer = 2
 material = SubResource("CanvasItemMaterial_tlbvb")
-custom_minimum_size = Vector2(3840, 3840)
-offset_left = -1920.0
-offset_top = -1920.0
-offset_right = 1920.0
-offset_bottom = 1920.0
+custom_minimum_size = Vector2(8000, 8000)
+offset_left = -4000.0
+offset_top = -4000.0
+offset_right = 4000.0
+offset_bottom = 4000.0
 
 [node name="FollowPlayer" type="Node2D" parent="."]
 editor_description = "A remote transform under the player character will keep this and it's children in the same position and rotation"
@@ -40,7 +40,8 @@ range_item_cull_mask = 2
 shadow_enabled = true
 shadow_item_cull_mask = 2
 texture = ExtResource("1_bsndu")
-offset = Vector2(1186, 0)
+offset = Vector2(1779, 0)
+texture_scale = 1.5
 
 [node name="RemoteTransform2D" type="RemoteTransform2D" parent="FollowPlayer"]
 editor_description = "Linked to FollowPlayerNoRotate node - background doesn't need to rotate"
