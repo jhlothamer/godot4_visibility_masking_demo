@@ -1,4 +1,7 @@
+<h3>Please Note: Do not use the Download ZIP feature in the <> Code dialog.  Instead, either clone the repo or download a ZIP fle under the Releases. </h3>
+
 # Visibility Masking in Godot 4.1+
+
 
 <p align="center">
 <img src="readme_images/demo_preview.png" />
